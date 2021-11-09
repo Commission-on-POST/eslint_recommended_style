@@ -60,11 +60,15 @@ module.exports = {
             "error",
             "always"
         ],
+        "@typescript-eslint/no-unsafe-argument":[
+            "off" // Unfortunately working with JS APIs necessitates working with functions that accept an any type
+        ],
         "@typescript-eslint/keyword-spacing": [
             "warn",
             {
                 "overrides": {
-                    "from": {"before": true, "after": true}
+                    "from": {"before": true, "after": true},
+                    "as": {"before": true, "after": true}
                     // { keyword: {before: <boolean>, after: <boolean>}}
                     // "abstract", "as", "async", "await", "boolean", "break", "byte", "case", "catch", "char", 
                     // "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", 
@@ -346,7 +350,7 @@ module.exports = {
         "max-len": [
             "warn",
             {
-                "code": 120,
+                "code": 160,
                 "tabWidth": 4,
                 "ignoreComments": true,
                 "ignoreRegExpLiterals": true,
@@ -616,11 +620,14 @@ module.exports = {
             "last"
         ],
         "sort-imports": [
-            "warn",
-            {
-                "allowSeparatedGroups": true,
-                "ignoreCase": true
-            }
+            "off"
+            // This rule has proven overly obnoxious for not much gain in code readability
+            // The auto-fixer for this rule cannot reorder imports just sub-modules
+            // "warn",
+            // {
+            //     "allowSeparatedGroups": true,
+            //     "ignoreCase": true
+            // }
         ],
         "sort-keys": [
             "warn",
@@ -748,10 +755,10 @@ module.exports = {
             "warn",
             {
                 "allowExpressions": false,
-                "allowTypedFunctionExpressions": false,
+                "allowTypedFunctionExpressions": true,
                 "allowHigherOrderFunctions": false,
-                "allowDirectConstAssertionInArrowFunctions": false,
-                "allowConciseArrowFunctionExpressionsStartingWithVoid": false
+                "allowDirectConstAssertionInArrowFunctions": true,
+                "allowConciseArrowFunctionExpressionsStartingWithVoid": true
             }
         ],
         "@typescript-eslint/explicit-member-accessibility": [
