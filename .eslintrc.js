@@ -25,7 +25,7 @@ module.exports = {
         ],
         "@typescript-eslint/comma-dangle": [
             "warn",
-            "always-multiline"
+            "never"
         ],
         "@typescript-eslint/comma-spacing": [
             "warn",
