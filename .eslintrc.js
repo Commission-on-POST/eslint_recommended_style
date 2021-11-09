@@ -38,13 +38,15 @@ module.exports = {
             "error"
         ],
         "@typescript-eslint/dot-notation": [
-            "warn",
-            {
-                "allowIndexSignaturePropertyAccess": true,
-                "allowKeywords": false,
-                "allowPrivateClassPropertyAccess": false,
-                "allowProtectedClassPropertyAccess": false
-            }
+            "off"
+            // This was turned off because .catch was being transformed to ["catch"]
+            // "warn",
+            // {
+            //     "allowIndexSignaturePropertyAccess": true,
+            //     "allowKeywords": false,
+            //     "allowPrivateClassPropertyAccess": false,
+            //     "allowProtectedClassPropertyAccess": false
+            // }
         ],
         "@typescript-eslint/func-call-spacing": [
             "warn",
@@ -922,7 +924,11 @@ module.exports = {
             "warn"
         ],
         "@typescript-eslint/type-annotation-spacing": [
-            "warn"
+            "warn",
+            {
+                before: true,
+                after: true
+            }
         ],
         "@typescript-eslint/typedef": [
             "warn",
