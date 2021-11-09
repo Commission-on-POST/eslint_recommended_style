@@ -62,6 +62,7 @@ module.exports = {
             "warn",
             {
                 "overrides": {
+                    "from": {"before": true, "after": true}
                     // { keyword: {before: <boolean>, after: <boolean>}}
                     // "abstract", "as", "async", "await", "boolean", "break", "byte", "case", "catch", "char", 
                     // "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", 
