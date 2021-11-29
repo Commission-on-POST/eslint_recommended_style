@@ -60,15 +60,24 @@ module.exports = {
             "error",
             "always"
         ],
-        "@typescript-eslint/no-unsafe-argument":[
+        "@typescript-eslint/no-unsafe-argument": [
+            "off" // Unfortunately working with JS APIs necessitates working with functions that accept an any type
+        ],
+        "@typescript-eslint/no-unsafe-call": [
+            "off" // Unfortunately working with JS APIs necessitates working with functions that accept an any type
+        ],
+        "@typescript-eslint/no-unsafe-member-access": [
+            "off" // Unfortunately working with JS APIs necessitates working with functions that accept an any type
+        ],
+        "@typescript-eslint/no-unsafe-assignment": [
             "off" // Unfortunately working with JS APIs necessitates working with functions that accept an any type
         ],
         "@typescript-eslint/keyword-spacing": [
             "warn",
             {
                 "overrides": {
-                    "from": {"before": true, "after": true},
-                    "as": {"before": true, "after": true}
+                    "from": { "before": true, "after": true },
+                    "as": { "before": true, "after": true }
                     // { keyword: {before: <boolean>, after: <boolean>}}
                     // "abstract", "as", "async", "await", "boolean", "break", "byte", "case", "catch", "char", 
                     // "class", "const", "continue", "debugger", "default", "delete", "do", "double", "else", "enum", 
@@ -138,8 +147,10 @@ module.exports = {
             "warn",
             {
                 "ignore": [
+                    -1,
                     0,
                     1,
+                    2,
                     69,
                     420
                 ]
@@ -338,6 +349,7 @@ module.exports = {
                 "afterColon": true,
                 "beforeColon": false
             }
+
         ],
         "linebreak-style": [
             "warn",
@@ -724,7 +736,7 @@ module.exports = {
         ],
         "@typescript-eslint/class-literal-property-style": [
             "warn",
-            "getters"
+            "fields"
         ],
         "@typescript-eslint/consistent-indexed-object-style": [
             "error",
@@ -933,7 +945,7 @@ module.exports = {
         "@typescript-eslint/type-annotation-spacing": [
             "warn",
             {
-                before: true,
+                before: false,
                 after: true
             }
         ],
