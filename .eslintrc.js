@@ -143,6 +143,9 @@ module.exports = {
         "@typescript-eslint/no-loss-of-precision": [
             "error"
         ],
+        "@typescript-eslint/unbound-method":[
+            "off"
+        ],
         "@typescript-eslint/no-magic-numbers": [
             "warn",
             {
