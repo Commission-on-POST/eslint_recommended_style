@@ -555,7 +555,7 @@ module.exports = {
                 "ExportDeclaration": "never",
                 "ImportDeclaration": "never",
                 "ObjectExpression": {
-                    "minProperties": 1
+                    "minProperties": 3
                 },
                 "ObjectPattern": {
                     "multiline": true
