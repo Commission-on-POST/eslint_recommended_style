@@ -8,7 +8,7 @@ $ npm install @commission-on-post/eslint-config-recommended -D
 ```
 ---
 
-## Recommended `.eslint.json`
+## Recommended `.eslintrc.json`
 ```json
 {
     "root": true,
