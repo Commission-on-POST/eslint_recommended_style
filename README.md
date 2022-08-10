@@ -3,8 +3,8 @@ The official [**Commission on Peace Officer Standards and Training**](https://gi
 
 ## Install
 ```bash
-$ npm install @typescript-eslint/parser
-$ npm install @commission-on-post/tslint-config-recommended
+$ npm install @typescript-eslint/parser -D
+$ npm install @commission-on-post/eslint-config-recommended -D
 ```
 ---
 
@@ -45,7 +45,7 @@ Name | Description | [:large_blue_circle:](##Scripts "LOGO / LINK")
 **LintLens - ESLint rules made easier** | Augment your ESLint rules in Visual Studio Code by Adding metadata and usage information beside each ESLint rule. |[<img alt="LinLens Logo" width="120px" src="https://cdn.vsassets.io/v/M194_20211025.9/_content/Header/default_icon_128.png"/>](https://marketplace.visualstudio.com/items?itemName=ghmcadams.lintlens)
 
 #### VS Code setting.json (fix on save)
-- If you have format on save in vs code you may need to disable it, because mine started fighting.
+- If you have format on save in VS Code you may need to disable it, because mine started fighting.
 ```json
 // (file->preferences->settings [switch to json view])
 "eslint.validate": [
