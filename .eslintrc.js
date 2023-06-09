@@ -9,7 +9,8 @@ module.exports = {
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
     plugins: [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "import/no-duplicates" // This was imported to replace the rule `no-duplicate-imports`
     ],
     rules: {
         /*
@@ -104,10 +105,11 @@ module.exports = {
         "@typescript-eslint/no-dupe-class-members": [
             "error"
         ],
-        "@typescript-eslint/no-duplicate-imports": [
+        // Rule updated from `no-duplicate-imports` 
+        "import/no-duplicates": [
             "error",
             {
-                "includeExports": true
+                "prefer-inline": true
             }
         ],
         "@typescript-eslint/no-empty-function": [
@@ -249,7 +251,7 @@ module.exports = {
             {
                 "arraysInArrays": false,
                 "objectsInArrays": true,
-                "singleValue": true
+                "singleValue": false
             }
         ],
         "arrow-body-style": [
@@ -555,7 +557,7 @@ module.exports = {
                 "ExportDeclaration": "never",
                 "ImportDeclaration": "never",
                 "ObjectExpression": {
-                    "minProperties": 3
+                    "minProperties": 2 // Updated from 3
                 },
                 "ObjectPattern": {
                     "multiline": true
@@ -742,8 +744,8 @@ module.exports = {
             "fields"
         ],
         "@typescript-eslint/consistent-indexed-object-style": [
-            "error",
-            "index-signature"
+            "warn",
+            "record"
         ],
         "@typescript-eslint/consistent-type-assertions": [
             "error",
@@ -814,7 +816,7 @@ module.exports = {
         ], // If you are disabling this rule consider changing your data structure
         "@typescript-eslint/no-extraneous-class": [
             "off"
-        ], // I dont think we have developers using namespaces as classes, but if they wanted to I don't think the linter should stop them
+        ], // I don't think we have developers using namespaces as classes, but if they wanted to I don't think the linter should stop them
         "@typescript-eslint/no-invalid-void-type": [
             "warn",
             {
@@ -828,8 +830,12 @@ module.exports = {
         "@typescript-eslint/no-non-null-asserted-nullish-coalescing": [
             "warn"
         ], // Wrap your expression in parenthesis
-        "@typescript-eslint/no-parameter-properties": [
-            "off"
+        "@typescript-eslint/parameter-properties": [
+            "warn",
+            {
+                "allow":[ "private readonly" ],
+                "prefer": "parameter-property"
+            }
         ], // I like parameter properties
         "@typescript-eslint/no-require-imports": [
             "error"
@@ -880,11 +886,7 @@ module.exports = {
             "off"
         ], // values are locally scoped 
         "@typescript-eslint/prefer-nullish-coalescing": [
-            "warn",
-            {
-                "ignoreConditionalTests": false,
-                "ignoreMixedLogicalExpressions": false
-            }
+            "off" // This rule was getting very annoying so it has been turned off going forward
         ],
         "@typescript-eslint/prefer-optional-chain": [
             "warn"
@@ -932,12 +934,11 @@ module.exports = {
                 "ignoreStringArrays": true
             }
         ],
-        "@typescript-eslint/sort-type-union-intersection-members": [
-            "warn",
-            {
-                "checkIntersections": true,
-                "checkUnions": true
-            }
+        "@typescript-eslint/sort-type-constituents": [
+            // This rule has been turned off because the settings are not granular enough to allow for `let x: string | string[] = undefined`
+            // It does not allow you to allow for arrays after literals without changing every group order.
+            // Developers will have to sort their own keys if they care about order.
+            "off" 
         ],
         "@typescript-eslint/strict-boolean-expressions": [
             "off"
@@ -967,6 +968,18 @@ module.exports = {
         ],
         "@typescript-eslint/unified-signatures": [
             "warn"
+        ],
+        // This rule was added later and
+        "@typescript-eslint/restrict-template-expressions": [
+            "warn",
+            {
+                "allowNumber": true,
+                "allowBoolean": true,
+                "allowAny": true,
+                "allowNullish": true,
+                "allowRegExp": true,
+                "allowNever": true
+            }
         ],
         // ~~~~~ Rules set to "off" because the tslinter overrides their base behavior ~~~~~
         "comma-dangle": [
@@ -1068,7 +1081,8 @@ module.exports = {
         "require-await": [
             "off"
         ],
-        "return-await": [
+        // This rule was renamed to have a `no-` in front of it
+        "no-return-await": [
             "off"
         ],
         "semi": [
