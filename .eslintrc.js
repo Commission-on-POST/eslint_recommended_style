@@ -10,7 +10,7 @@ module.exports = {
     ],
     plugins: [
         "@typescript-eslint",
-        "import/no-duplicates" // This was imported to replace the rule `no-duplicate-imports`
+        "import" // This was imported to replace the rule `no-duplicate-imports`
     ],
     rules: {
         /*
