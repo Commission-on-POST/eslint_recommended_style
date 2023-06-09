@@ -619,7 +619,7 @@ module.exports = {
             "as-needed"
         ],
         "require-unicode-regexp": [
-            "warn"
+            "off"
         ],
         "rest-spread-spacing": [
             "error",
