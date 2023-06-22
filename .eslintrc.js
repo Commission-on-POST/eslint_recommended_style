@@ -10,7 +10,8 @@ module.exports = {
     ],
     plugins: [
         "@typescript-eslint",
-        "import" // This was imported to replace the rule `no-duplicate-imports`
+        // Import has security issues removed for the tiim
+        //"import" // This was imported to replace the rule `no-duplicate-imports`
     ],
     rules: {
         /*
@@ -105,13 +106,20 @@ module.exports = {
         "@typescript-eslint/no-dupe-class-members": [
             "error"
         ],
-        // Rule updated from `no-duplicate-imports` 
-        "import/no-duplicates": [
-            "error",
+        // The import/no-duplicates has security vunerabilites so for now the deprecated approach is going to be used
+        "@typescript-eslint/no-duplicate-imports":[
+            "warn",
             {
-                "prefer-inline": true
+                "includeExports": true
             }
         ],
+        // Rule updated from `no-duplicate-imports` 
+        // "import/no-duplicates": [
+        //     "error",
+        //     {
+        //         "prefer-inline": true
+        //     }
+        // ],
         "@typescript-eslint/no-empty-function": [
             "warn",
             {
