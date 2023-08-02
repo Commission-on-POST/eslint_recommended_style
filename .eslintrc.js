@@ -5,13 +5,14 @@ module.exports = {
     },
     extends: [
         "eslint:recommended",
+        "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
     plugins: [
         "@typescript-eslint",
         // Import has security issues removed for the tiim
-        //"import" // This was imported to replace the rule `no-duplicate-imports`
+        "import" // This was imported to replace the rule `no-duplicate-imports`
     ],
     rules: {
         /*
@@ -107,19 +108,19 @@ module.exports = {
             "error"
         ],
         // The import/no-duplicates has security vunerabilites so for now the deprecated approach is going to be used
-        "@typescript-eslint/no-duplicate-imports":[
-            "warn",
-            {
-                "includeExports": true
-            }
-        ],
-        // Rule updated from `no-duplicate-imports` 
-        // "import/no-duplicates": [
-        //     "error",
+        // "@typescript-eslint/no-duplicate-imports":[
+        //     "warn",
         //     {
-        //         "prefer-inline": true
+        //         "includeExports": true
         //     }
         // ],
+        // Rule updated from `no-duplicate-imports` 
+        "import/no-duplicates": [
+            "error",
+            {
+                "prefer-inline": true
+            }
+        ],
         "@typescript-eslint/no-empty-function": [
             "warn",
             {
