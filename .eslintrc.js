@@ -755,7 +755,7 @@ module.exports = {
             }
         ],
         "@typescript-eslint/consistent-type-definitions": [
-            "error",
+            "warn",
             "interface"
         ],
         "@typescript-eslint/consistent-type-exports": [
@@ -839,19 +839,6 @@ module.exports = {
         ], // I like parameter properties
         "@typescript-eslint/no-require-imports": [
             "error"
-        ],
-        "@typescript-eslint/no-type-alias": [
-            "warn",
-            {
-                "allowAliases": "in-unions-and-intersections",
-                "allowCallbacks": "always",
-                "allowConditionalTypes": "never",
-                "allowConstructors": "never",
-                "allowLiterals": "in-unions-and-intersections",
-                "allowMappedTypes": "always",
-                "allowTupleTypes": "never",
-                "allowGenerics": "always"
-            }
         ],
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
             "warn",
@@ -1079,10 +1066,6 @@ module.exports = {
             "off"
         ],
         "require-await": [
-            "off"
-        ],
-        // This rule was renamed to have a `no-` in front of it
-        "no-return-await": [
             "off"
         ],
         "semi": [
