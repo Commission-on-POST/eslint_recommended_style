@@ -5,13 +5,13 @@ module.exports = {
     },
     extends: [
         "eslint:recommended",
+        "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
     plugins: [
         "@typescript-eslint",
-        // Import has security issues removed for the tiim
-        //"import" // This was imported to replace the rule `no-duplicate-imports`
+        "import"
     ],
     rules: {
         /*
@@ -106,20 +106,12 @@ module.exports = {
         "@typescript-eslint/no-dupe-class-members": [
             "error"
         ],
-        // The import/no-duplicates has security vunerabilites so for now the deprecated approach is going to be used
-        "@typescript-eslint/no-duplicate-imports":[
+        "import/no-duplicates": [
             "warn",
             {
-                "includeExports": true
+                "prefer-inline": true
             }
         ],
-        // Rule updated from `no-duplicate-imports` 
-        // "import/no-duplicates": [
-        //     "error",
-        //     {
-        //         "prefer-inline": true
-        //     }
-        // ],
         "@typescript-eslint/no-empty-function": [
             "warn",
             {
@@ -763,7 +755,7 @@ module.exports = {
             }
         ],
         "@typescript-eslint/consistent-type-definitions": [
-            "error",
+            "warn",
             "interface"
         ],
         "@typescript-eslint/consistent-type-exports": [
@@ -847,19 +839,6 @@ module.exports = {
         ], // I like parameter properties
         "@typescript-eslint/no-require-imports": [
             "error"
-        ],
-        "@typescript-eslint/no-type-alias": [
-            "warn",
-            {
-                "allowAliases": "in-unions-and-intersections",
-                "allowCallbacks": "always",
-                "allowConditionalTypes": "never",
-                "allowConstructors": "never",
-                "allowLiterals": "in-unions-and-intersections",
-                "allowMappedTypes": "always",
-                "allowTupleTypes": "never",
-                "allowGenerics": "always"
-            }
         ],
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
             "warn",
@@ -1087,10 +1066,6 @@ module.exports = {
             "off"
         ],
         "require-await": [
-            "off"
-        ],
-        // This rule was renamed to have a `no-` in front of it
-        "no-return-await": [
             "off"
         ],
         "semi": [
