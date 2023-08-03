@@ -32,10 +32,10 @@ $ npm install @commission-on-post/eslint-config-recommended -D
 ### Peer Dependencies
 | Package | Version |
 |---------|---------|
-| @typescript-eslint/eslint-plugin | >=5.3.0 |
-| @typescript-eslint/parser | >=5.3.0 |
-| eslint | >=8.1.0 |
-| typescript | >=4.4.4 |
+| @typescript-eslint/eslint-plugin | >=6.2.1 |
+| @typescript-eslint/parser | >=6.2.1 |
+| eslint | >=8.46.0 |
+| typescript | >=5.1.6 |
 ---
 ### Workspace Setup
 #### Suggested VS Code Extensions
