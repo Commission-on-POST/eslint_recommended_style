@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         "eslint:recommended",
         "plugin:import/recommended",
+        "plugin:import/typescript",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
@@ -111,6 +112,9 @@ module.exports = {
             {
                 "prefer-inline": true
             }
+        ],
+        "import/no-named-as-default": [
+            "off"
         ],
         "@typescript-eslint/no-empty-function": [
             "warn",
@@ -1077,5 +1081,19 @@ module.exports = {
         "space-infix-ops": [
             "off"
         ]
-    }
+    },
+    settings: {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+    
+            // use <root>/path/to/folder/tsconfig.json
+            "project": "path/to/folder"
+          },
+          "node": true
+        }
+      }
 }
