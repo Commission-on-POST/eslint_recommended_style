@@ -1093,7 +1093,8 @@ export default {
             // use <root>/path/to/folder/tsconfig.json
             "project": "path/to/folder"
           },
-          "node": true
+          "node": true,
+          "typescript": true
         }
       }
 };
