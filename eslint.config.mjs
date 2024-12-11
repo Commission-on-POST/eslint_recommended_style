@@ -1,44 +1,76 @@
-module.exports = {
-    parser: "@typescript-eslint/parser",
-    parserOptions: {
-        "project": "./tsconfig.json"
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat"; // eslint-disable-line
+import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import _import from "eslint-plugin-import";
+import tsParser from "@typescript-eslint/parser";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import js from "@eslint/js";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all
+});
+
+export default [...fixupConfigRules(compat.extends(
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+)), {
+    plugins: {
+        "@typescript-eslint": fixupPluginRules(typescriptEslint),
+        import: fixupPluginRules(_import),
     },
-    extends: [
-        "eslint:recommended",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ],
-    plugins: [
-        "@typescript-eslint",
-        "import"
-    ],
+    files: ["**/*.ts"],
+    languageOptions: {
+        parser: tsParser,
+        ecmaVersion: 5,
+        sourceType: "script",
+
+        parserOptions: {
+            project: "./tsconfig.json",
+        },
+    },
+
+    settings: {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"],
+        },
+
+        "import/resolver": {
+            typescript: {
+                alwaysTryTypes: true,
+                project: "path/to/folder",
+            },
+
+            node: true,
+        },
+    },
+
     rules: {
-        "@typescript-eslint/adjacent-overload-signatures":  "error",
-        "@typescript-eslint/consistent-generic-constructors":  [
-            "error",
-            "type-annotation"
-        ],
+        "@typescript-eslint/adjacent-overload-signatures": "error",
+        "@typescript-eslint/consistent-generic-constructors": ["error", "type-annotation"],
         "@typescript-eslint/explicit-function-return-type": "error",
         "@typescript-eslint/explicit-module-boundary-types": "error",
-        "@typescript-eslint/naming-convention": [
-            "warn",
-            {
-                selector: ['classProperty', 'objectLiteralProperty', "parameter", 'variable'],
-                format: ['camelCase', "snake_case" ],
-                leadingUnderscore: 'allow'
-            },
-            {
-                selector: ['class', 'classMethod', 'function', 'typeMethod'],
-                format: ['camelCase'],
-                leadingUnderscore: 'allow'
-            },
-            {
-                selector: ['interface', 'class'],
-                format: ['PascalCase']
-            }
-        ],
+
+        "@typescript-eslint/naming-convention": ["warn", {
+            selector: ["classProperty", "objectLiteralProperty", "parameter", "variable"],
+            format: ["camelCase", "snake_case"],
+            leadingUnderscore: "allow",
+        }, {
+            selector: ["class", "classMethod", "function", "typeMethod"],
+            format: ["camelCase"],
+            leadingUnderscore: "allow",
+        }, {
+            selector: ["interface", "class"],
+            format: ["PascalCase"],
+        }],
+
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
         "@typescript-eslint/no-confusing-void-expression": "error",
         "@typescript-eslint/no-dynamic-delete": "error",
@@ -49,12 +81,11 @@ module.exports = {
         "no-invalid-this": "off",
         "@typescript-eslint/no-invalid-this": "error",
         "@typescript-eslint/no-invalid-void-type": "error",
-        "@typescript-eslint/no-misused-promises": [
-            "error",
-            {
-                checksVoidReturn: false
-            }
-        ],
+
+        "@typescript-eslint/no-misused-promises": ["error", {
+            checksVoidReturn: false,
+        }],
+
         "@typescript-eslint/no-mixed-enums": "error",
         "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
         "@typescript-eslint/no-require-imports": "error",
@@ -91,14 +122,13 @@ module.exports = {
         "no-constant-binary-expression": "error",
         "no-debugger": "warn",
         "no-fallthrough": "warn",
-        "no-irregular-whitespace": [
-            "error",
-            {
-                "skipStrings": true,
-                "skipTemplates": true,
-                "skipJSXText": true
-            }
-        ],
+
+        "no-irregular-whitespace": ["error", {
+            skipStrings: true,
+            skipTemplates: true,
+            skipJSXText: true,
+        }],
+
         "no-new-native-nonconstructor": "error",
         "no-promise-executor-return": "warn",
         "no-self-compare": "warn",
@@ -111,22 +141,19 @@ module.exports = {
         "block-scoped-var": "warn",
         "capitalized-comments": "error",
         "class-methods-use-this": "warn",
-        "complexity": "warn",
+        complexity: "warn",
         "default-case": "error",
         "default-case-last": "warn",
-        "eqeqeq": "error",
-        "max-depth": [
-            "warn",
-            {
-                "max": 5
-            }
-        ],
-        "max-params": [
-            "warn",
-            {
-                "max": 4
-            }
-        ],
+        eqeqeq: "error",
+
+        "max-depth": ["warn", {
+            max: 5,
+        }],
+
+        "max-params": ["warn", {
+            max: 4,
+        }],
+
         "no-alert": "warn",
         "no-caller": "error",
         "no-case-declarations": "warn",
@@ -161,19 +188,4 @@ module.exports = {
         "prefer-object-spread": "error",
         "require-unicode-regexp": "warn",
     },
-    settings: {
-        "import/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx"]
-        },
-        "import/resolver": {
-          "typescript": {
-            "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
-    
-            // use <root>/path/to/folder/tsconfig.json
-            "project": "path/to/folder"
-          },
-          "node": true,
-          "typescript": true
-        }
-      }
-};
+}];

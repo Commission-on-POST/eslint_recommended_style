@@ -2,15 +2,18 @@
   "name": "@commission-on-post/eslint-config-recommended",
   "version": "0.9.0",
   "description": "ESLint config using recommended state practices for the Commission on POST",
-  "main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
   "author": "Ryan W. Bell",
   "license": "UNLICENSED",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Commission-on-POST/eslint_recommended_style.git"
   },
   "homepage": "https://github.com/Commission-on-POST/eslint_recommended_style#readme",
   "scripts": {
+    "build": "tsc --pretty && echo REMEMBER TO COPY ./eslint.config.mjs TO DIST FOLDER",
     "start": "node ."
   },
   "keywords": [
@@ -21,10 +24,10 @@
     "recommended"
   ],
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": ">=6.2.1",
-    "@typescript-eslint/parser": ">=6.2.1",
-    "eslint": ">=8.46.0",
-    "typescript": ">=5.1.6"
+    "@typescript-eslint/eslint-plugin": ">=8.18.0",
+    "@typescript-eslint/parser": ">=8.18.0",
+    "eslint": ">=9.16.0",
+    "typescript": ">=5.7.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.18.0",
@@ -32,5 +35,8 @@
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.31.0",
     "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@eslint/migrate-config": "^1.3.5"
   }
 }
