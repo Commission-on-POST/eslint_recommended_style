@@ -1,4 +1,4 @@
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat"; // eslint-disable-line
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import _import from "eslint-plugin-import";
 import tsParser from "@typescript-eslint/parser";
