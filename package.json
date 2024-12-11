@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/Commission-on-POST/eslint_recommended_style#readme",
   "scripts": {
+    "repack": "(del *.tgz 2> NUL || exit 0) && npm pack",
     "build": "tsc --pretty && echo REMEMBER TO COPY ./eslint.config.mjs TO DIST FOLDER",
     "start": "node ."
   },
@@ -27,5 +28,11 @@
     "eslint": "^9.16.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
+  },
+  "peerDependencies": {
+    "@eslint/js": ">=9.16.0",
+    "eslint": ">=9.16.0",
+    "typescript": ">=5.7.2",
+    "typescript-eslint": ">=8.18.0"
   }
 }
