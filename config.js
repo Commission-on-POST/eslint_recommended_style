@@ -1,5 +1,4 @@
-export default [
-  {
+export default {
     languageOptions: {
         parserOptions: {
         projectService: true,
@@ -143,5 +142,4 @@ export default [
         "prefer-object-spread": "error",
         "require-unicode-regexp": "warn",
     }
-  }
-]
+}
