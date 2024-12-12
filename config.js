@@ -17,12 +17,15 @@ export default {
             format: ["camelCase", "snake_case"],
             leadingUnderscore: "allow",
         }, {
-            selector: ["class", "classMethod", "function", "typeMethod"],
+            selector: ["classMethod", "function", "typeMethod"],
             format: ["camelCase"],
             leadingUnderscore: "allow",
         }, {
             selector: ["interface", "class"],
             format: ["PascalCase"],
+        }, {
+            selector: ["class"],
+            format: ["PascalCase", "camelCase"],
         }],
 
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
