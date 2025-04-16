@@ -1,6 +1,6 @@
 {
   "name": "@commission-on-post/eslint-config-recommended",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ESLint config using recommended state practices for the Commission on POST",
   "main": "./config.js",
   "author": "Ryan W. Bell",
