@@ -14,7 +14,6 @@
   "scripts": {
     "repack": "(del *.tgz 2> NUL || exit 0) && npm pack",
     "build": "tsc --pretty && echo REMEMBER TO COPY ./eslint.config.mjs TO DIST FOLDER",
-    "prepublishOnly": "npm version patch",
     "start": "node ."
   },
   "keywords": [
