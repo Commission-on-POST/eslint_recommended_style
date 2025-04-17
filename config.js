@@ -21,7 +21,7 @@ export default {
             format: ["camelCase"],
             leadingUnderscore: "allow",
         }, {
-            selector: ["interface", "class"],
+            selector: ["interface"],
             format: ["PascalCase"],
         }, {
             selector: ["class"],
